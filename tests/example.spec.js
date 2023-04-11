@@ -24,6 +24,6 @@ test.describe("Dymaskaya site / test suit 1", () => {
     await page.getByPlaceholder("Пошук").click();
     await page.locator("input[id='first']").fill("test");
     // for mobile safari browser check mobile version of site, goto, press on burger menu, choose Пошук, fill test in search input, press Найти button
-   //  bla bla bla
+   //  bla bla bla bla
   });
 });
