@@ -20,10 +20,20 @@ test.describe("Dymaskaya site / test suit 1", () => {
     await expect(page).toHaveURL("https://dumskaya.not/");
   });
 
-  test("Fill 'test' text in search / test case 3", async ({ page }) => {
+  test.only("Fill 'test' text in search / test case 3", async ({ page }) => {
     await page.getByPlaceholder("Пошук").click();
     await page.locator("input[id='first']").fill("test");
-    // for mobile safari browser check mobile version of site, goto, press on burger menu, choose Пошук, fill test in search input, press Найти button
-   //  bla bla bla bla
+    await page.locator("input[src='/i/enter.png']").click();
+    await page.waitForSelector(
+      "div[style='padding-left:25px;'] ol li"
+    );
+   
+
+   //   const olList = await page.locator("div[style='padding-left:25px;'] ol li");
+   //   const olItem = await Promise.all(olList.map(async (listItem)=>{
+   //     return await listItem;
+   //   }))
+   //   console.log(olItem);
+    //  await expect(page.locator("div[style='padding-left:25px;'] ol >> nth=0 li")).toHaveCount(6);
   });
 });
