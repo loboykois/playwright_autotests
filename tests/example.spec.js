@@ -24,16 +24,8 @@ test.describe("Dymaskaya site / test suit 1", () => {
     await page.getByPlaceholder("Пошук").click();
     await page.locator("input[id='first']").fill("test");
     await page.locator("input[src='/i/enter.png']").click();
-    await page.waitForSelector(
-      "div[style='padding-left:25px;'] ol li"
-    );
-   
 
-   //   const olList = await page.locator("div[style='padding-left:25px;'] ol li");
-   //   const olItem = await Promise.all(olList.map(async (listItem)=>{
-   //     return await listItem;
-   //   }))
-   //   console.log(olItem);
-    //  await expect(page.locator("div[style='padding-left:25px;'] ol >> nth=0 li")).toHaveCount(6);
+    const listWithOl = (await page.$$("ol[class='results']"));
+
   });
 });
