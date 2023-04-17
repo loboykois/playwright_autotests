@@ -20,12 +20,16 @@ test.describe("Dymaskaya site / test suit 1", () => {
     await expect(page).toHaveURL("https://dumskaya.not/");
   });
 
-  test.only("Fill 'test' text in search / test case 3", async ({ page }) => {
+  test("Fill 'test' text in search / test case 3", async ({ page }) => {
     await page.getByPlaceholder("Пошук").click();
     await page.locator("input[id='first']").fill("test");
     await page.locator("input[src='/i/enter.png']").click();
 
-    const listWithOl = (await page.$$("ol[class='results']"));
-
+    //  const listWithOl = (await page.$$("ol[class='results']"));
+    const olList = await page
+      .locator("body > div.content > div > div > ol:nth-child(4)")
+      .locator("li");
+    // const liList = olList.locator("li");
+    await expect(olList).toHaveCount(6);
   });
 });
