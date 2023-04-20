@@ -31,6 +31,6 @@ test.describe("Dymaskaya site / test suit 1", () => {
 
     //  await expect(results).toHaveCount(6);
     expect(results.length).toBe(6);
-   //  comment 1
+    //  comment 2
   });
 });
