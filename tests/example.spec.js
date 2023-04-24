@@ -20,7 +20,16 @@ test.describe("Dymaskaya site / test suit 1", () => {
     await expect(page).toHaveURL("https://dumskaya.not/");
   });
 
-  test.only("Fill 'test' text in search / test case 3", async ({ page }) => {
+  test.only("when 'test' entered in search should display 6 results", async ({
+    page,
+  }) => {
+    // const searchPage = new SearchPage ()
+    // await searchPage.navigate()
+    // await searchPage.searchInput.type("test")
+    // await searchPage.searchButton.click()
+    // await searchPage.search("test")
+    // const results = searchPage.results
+
     await page.getByPlaceholder("Пошук").click();
     await page.locator("input[id='first']").fill("test");
     await page.locator("input[src='/i/enter.png']").click();
@@ -31,5 +40,7 @@ test.describe("Dymaskaya site / test suit 1", () => {
 
     //  await expect(results).toHaveCount(6);
     expect(results.length).toBe(6);
+    //  comment 2
+   //  with conventional commits
   });
 });
