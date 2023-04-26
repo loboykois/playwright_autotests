@@ -13,7 +13,7 @@ const { defineConfig, devices } = require("@playwright/test");
 module.exports = defineConfig({
   testDir: "./tests",
   /* Maximum time one test can run for. */
-  timeout: 30 * 1000,
+  timeout: 20 * 1000,
   expect: {
     /**
      * Maximum time expect() should wait for the condition to be met.
@@ -50,10 +50,10 @@ module.exports = defineConfig({
       use: { ...devices["Desktop Chrome"] },
     },
 
-   //  {
-   //    name: "firefox",
-   //    use: { ...devices["Desktop Firefox"] },
-   //  },
+    {
+      name: "firefox",
+      use: { ...devices["Desktop Firefox"] },
+    },
 
     //  {
     //    name: 'webkit',
@@ -65,10 +65,10 @@ module.exports = defineConfig({
     //   name: 'Mobile Chrome',
     //   use: { ...devices['Pixel 5'] },
     // },
-   //  {
-   //    name: "Mobile Safari",
-   //    use: { ...devices["iPhone 13"] },
-   //  },
+    {
+      name: "Mobile Safari",
+      use: { ...devices["iPhone 13"] },
+    },
 
     /* Test against branded browsers. */
     // {
