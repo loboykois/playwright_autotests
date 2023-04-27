@@ -38,7 +38,7 @@ test.describe("https://dumskaya.net/ site test suit", () => {
       await page.locator("input[id='first']").fill("test");
       await page.locator("input[src='/i/enter.png']").click();
       const results = page.locator(".results:first-of-type li");
-      await expect(results).toHaveCount(6);
+      await expect(results).toHaveCount(7);
     }
   });
 });
