@@ -1,13 +1,13 @@
 const { test, expect } = require("@playwright/test");
 
-test.describe("https://dumskaya.net/ site test suit", () => {
+test.describe("https://dumskaya.net/ site test suite", () => {
   const sitePage = "https://dumskaya.net/";
 
   test.beforeEach(async ({ page }) => {
     await page.goto(sitePage);
   });
 
-  test("when 'Реклама' link was click page should contain text", async ({
+  test("when 'Реклама' link clicked page should contain valid text", async ({
     page,
   }) => {
     await page.locator('a[href="/site/Reklama"]').first().click();
@@ -18,7 +18,7 @@ test.describe("https://dumskaya.net/ site test suit", () => {
     );
   });
 
-  test("when filled incorrect URL test case should be fail", async ({
+  test("when filled incorrect URL test case should fail", async ({
     page,
   }) => {
     await expect(page).toHaveURL("https://dumskaya.not/");
