@@ -12,9 +12,9 @@ test.describe("https://dumskaya.net/ site test suit", () => {
   }) => {
     await page.locator('a[href="/site/Reklama"]').first().click();
     await expect(
-      page.locator("body > div.content > div > p:nth-child(3)")
+      page.locator(".content > div > p:nth-child(3)")
     ).toContainText(
-      "Мы предлагаем размещение рекламных баннеров на нашем сайте. "
+      "Мы предлагаем размещение рекламных баннеров на нашем сайте."
     );
   });
 
