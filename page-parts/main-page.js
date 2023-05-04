@@ -43,14 +43,22 @@ exports.MainPage = class MainPage {
   }
 
   // check search work with 'test' request on desktop site version
-  async checkSearchResultsOnDesktopSiteVersion() {
+  async checkSearchResultsOnDesktopSiteVersion(searchText) {
+    if (!searchText) {
+      throw new Error("search text cannot be empty");
+    }
     await this.desktopSiteSearch.click();
-    await this.desktopSiteSearchInput.fill("test");
+    await this.desktopSiteSearchInput.fill(searchText);
     await this.desktopSiteSearchBtn.click();
   }
   // check search results at desktop and mobile site versions
   async checkSearchingResultsBothVersions() {
     const results = this.page.locator(".results:first-of-type li");
     await expect(results).toHaveCount(6);
+  }
+
+  async getSearchResults() {
+    const pageCollection = await this.page.$$(".results:first-of-type li");
+    return pageCollection;
   }
 };

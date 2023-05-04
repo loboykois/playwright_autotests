@@ -1,4 +1,4 @@
-const { test } = require("@playwright/test");
+const { test, expect } = require("@playwright/test");
 const { MainPage } = require("../page-parts/main-page");
 
 test.describe("https://dumskaya.net/ site test suit", async () => {
@@ -27,10 +27,26 @@ test.describe("https://dumskaya.net/ site test suit", async () => {
     browserName,
   }) => {
     const mainPage = new MainPage(page);
+
     if (browserName === "webkit") {
       await mainPage.checkSearchResultsOnMobileSiteVersion();
     }
-    await mainPage.checkSearchResultsOnDesktopSiteVersion();
+
+    try {
+      await mainPage.checkSearchResultsOnDesktopSiteVersion();
+      console.info("test");
+    } catch (error) {
+      console.error(error);
+      await mainPage.checkSearchResultsOnDesktopSiteVersion("test");
+      console.info("test");
+    } finally {
+      console.info("some text");
+    }
     await mainPage.checkSearchingResultsBothVersions();
+    //  const searchResults = await mainPage.getSearchResults().count();
+    //  expect(searchResults).toBe(6);
+
+    const searchResults = await mainPage.getSearchResults();
+    expect(searchResults.length).toBe(6);
   });
 });
